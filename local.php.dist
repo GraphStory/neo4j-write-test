@@ -6,7 +6,7 @@ return [
         'scheme' => 'http',
         'host' => 'localhost',
         'port' => 7474,
-        'authMode' => false
+        'authMode' => false,
         'authUser' => 'username',
         'authPassword' => 'pass',
         'defaultTimeout' => 10,
