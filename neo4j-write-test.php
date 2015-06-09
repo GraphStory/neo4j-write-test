@@ -27,7 +27,7 @@ $companyName = 'Company Name';
 
 $client->createUniqueConstraint('Company', 'name');
 $client->createUniqueConstraint('Person', 'email');
-$client->sendCypherQuery('CREATE (c:Company { name: { name }}) RETURN c;', ['name' => $companyName]);
+$client->sendCypherQuery('MERGE (c:Company { name: { name }}) RETURN c;', ['name' => $companyName]);
 
 $s = microtime(true);
 
