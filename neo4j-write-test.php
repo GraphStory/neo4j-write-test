@@ -23,20 +23,23 @@ $client = ClientBuilder::create()->addConnection(
 ->setAutoFormatResponse($config['neo4j']['autoFormatResponse'])
 ->build();
 
+$companyName = 'Company Name';
+
 $client->createUniqueConstraint('Company', 'name');
 $client->createUniqueConstraint('Person', 'email');
+$client->sendCypherQuery('CREATE (c:Company { name: { name }}) RETURN c;', ['name' => $companyName]);
 
 $s = microtime(true);
 
 $tx = $client->prepareTransaction();
 
-for ($i = 1; $i < 100000; $i++) {
+for ($i = 1; $i < 1000000; $i++) {
     $q = 'MATCH (c:Company {name: {name}})
     MERGE (p:Person {email: {email}})
     MERGE (p)-[:WORKS_AT]->(c)';
 
     $p = [
-        'name' => 'Company Name',
+        'name' => $companyName,
         'email' => sprintf('%d@example.com', $i),
     ];
 
