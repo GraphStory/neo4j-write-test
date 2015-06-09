@@ -23,6 +23,9 @@ $client = ClientBuilder::create()->addConnection(
 ->setAutoFormatResponse($config['neo4j']['autoFormatResponse'])
 ->build();
 
+$client->createUniqueConstraint('Company', 'name');
+$client->createUniqueConstraint('Person', 'email');
+
 $s = microtime(true);
 
 $tx = $client->prepareTransaction();
