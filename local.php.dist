@@ -1,0 +1,15 @@
+<?php
+
+return [
+    'neo4j' => [
+        'alias' => 'default',
+        'scheme' => 'http',
+        'host' => 'localhost',
+        'port' => 7474,
+        'authMode' => false
+        'authUser' => 'username',
+        'authPassword' => 'pass',
+        'defaultTimeout' => 10,
+        'autoFormatResponse' => true,
+    ],
+];
